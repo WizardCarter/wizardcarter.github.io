@@ -2,7 +2,11 @@
 <html>
   <body>
     <canvas id="painter" width="800" height="600" style="border: 5px solid black"></canvas>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script>
+      $("#painter").onclick(function() {
+        $("#painter").fadeToggle();
+      });
       console.log("Started!");
       var canvas = document.getElementById("painter");
       var WIDTH = canvas.width;

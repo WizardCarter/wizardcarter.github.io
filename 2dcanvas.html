@@ -1,9 +1,11 @@
 <!DOCTYPE HTML>
 <html>
   <body>
-    <canvas id="painter" width="800" height="600" style="border: 1px solid black"></canvas>
+    <canvas id="painter" width="800" height="600" style="border: 5px solid black"></canvas>
     <script>
       var canvas = document.getElementById("painter");
+      var WIDTH = canvas.width;
+      var HEIGHT = canvas.height;
       var c = canvas.getContext("2d");
       c.fillStyle = "purple";
       c.fillRect(375, 275, 50, 50);

@@ -49,12 +49,30 @@ class Shader { //shader class
 }
 
 class Cube() {
-    glm.vec3 position;
-    glm.vec3 scale;
-    glm.quat rotation;
+    var position;
+    var scale;
+    var rotation;
+    constructor() {
+      
+    }
 }
 
 class CubeRenderer() {
+  
+}
+
+class Rectangle() {
+  var position;
+  var scale;
+  var rotation;
+  constructor() {
+    position = glm.vec2(0.0, 0.0);
+    scale = glm.vec2(1.0, 1.0);
+    rotation = 0.0;
+  }
+}
+
+class RectangleRenderer() {
   
 }
 

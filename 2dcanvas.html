@@ -7,10 +7,19 @@
       var c = canvas.getContext("2d");
       c.fillStyle = "purple";
       c.fillRect(375, 275, 50, 50);
-      c.fillStyle = "blue";
-      c.beginPath();
-      c.arc(70, 150, 69, 0, Math.PI);
-      c.fill();
+      c.strokeStyle = "blue";
+      
+      var angle = 0;
+      var cmTID;
+      
+      function draw() {
+        angle += 0.01;
+        c.beginPath();
+        c.arc(70, 150, 69, 0, angle*Math.PI);
+        c.stroke();
+        clearTimeout(cmTID);
+        cmTID = setTimeout(draw, 0.05);
+      }
     </script>
   </body>
 </html>

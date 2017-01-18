@@ -4,13 +4,24 @@
     <title>Carter's Test Site</title>
     <style>
       #topTitle {
-        text-align: center;  
+        text-align: center;
+        visibility: hidden;
+      }
+      #webGLLink {
+        visibility: hidden;  
       }
     </style>
   </head>
   <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <h1 id="topTitle">Test site</h1>
-    <a href="webgltesting.html">Go to my WebGL testing page</a>
+    <a id="webGLLink" href="webgltesting.html">Go to my WebGL testing page</a>
+    <script>
+      $(document).ready(function(){
+       $("#topTitle").fadeIn();
+       $("#webGLLink").fadeIn();
+      });
+    </script>
   <script>
   </script>
   </body>

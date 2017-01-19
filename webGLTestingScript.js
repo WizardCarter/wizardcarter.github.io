@@ -62,9 +62,9 @@ class CubeRenderer() {
 }
 
 class Rectangle() {
-  var position;
+  var position = glm.vec2(0.0, 0.0);
   var scale;
-  var rotation;
+  var rotation = 0;
   constructor() {
     position = glm.vec2(0.0, 0.0);
     scale = glm.vec2(1.0, 1.0);
@@ -73,7 +73,16 @@ class Rectangle() {
 }
 
 class RectangleRenderer() {
-  
+  var shader;
+  var vao;
+  var vbo;
+  var ebo;
+  constructor(Shader) {
+    shader = Shader;
+    vbo = gl.createBuffer();
+    ebo = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
+  }
 }
 
 function initWebGL(var canvas) {

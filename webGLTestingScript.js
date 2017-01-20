@@ -1,4 +1,5 @@
 var gl;
+var cmTID;
 
 class Shader { //shader class
   var programID;
@@ -52,8 +53,15 @@ class Cube() {
     var position;
     var scale;
     var rotation;
+    var color;
     constructor() {
-      
+        position = glm.vec3(0.0, 0.0, 0.0);
+        scale = glm.vec3(1.0, 1.0, 1.0);
+        rotation = glm.vec3(1.0, 1.0, 1.0);
+        color = glm.vec3(1.0, 1.0, 1.0);
+    }
+    function move(x, y) {
+        position
     }
 }
 
@@ -130,11 +138,27 @@ function start() {
     return;
   }
   
-  gl.clearColor(1.0, 1.0, 1.0, 1.0); //clear colors
+  gl.clearColor(0.0, 0.0, 0.0, 1.0); //clear colors
   
   
   gl.enable(gl.DEPTH_TEST);
   gl.depthFunc(gl.LEQUAL);
   
   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+  
+  var vbo = gl.createBuffer();
+  var ebo = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
+  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ebo);
+  
+  main();
+}
+
+function main() {
+  
+  gl.clearColor(0.0, 0.0, 0.0, 1.0);
+  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT); 
+  
+  clearTimeout(cmTID);
+  setTimeout(main, 100);
 }

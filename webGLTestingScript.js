@@ -58,7 +58,30 @@ class Cube() {
 }
 
 class CubeRenderer() {
-  
+  var shader;
+  var vao;
+  var vbo;
+  var ebo;
+  constructor(Shader) {
+    shader = Shader;
+    vbo = gl.createBuffer();
+    ebo = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ebo);
+    
+    var vertices[] = {
+      0.0, 0.0, 0.5,
+      1.0, 0.0, 0.5,
+      1.0, -1.0, 0.5,
+      0.0, -1.0, 0.5,
+      0.0, 0.0, -0.5,
+      1.0, 0.0, -0.5,
+      1.0, -1.0, -0.5,
+      0.0, -1.0, -0.5
+    };
+    
+    //TODO add elements array
+  }
 }
 
 class Rectangle() {
@@ -109,9 +132,9 @@ function start() {
   
   gl.clearColor(1.0, 1.0, 1.0, 1.0); //clear colors
   
-  /* FOR 3D
+  
   gl.enable(gl.DEPTH_TEST);
   gl.depthFunc(gl.LEQUAL);
-  */
-  gl.clear(gl.COLOR_BUFFER_BIT /* | gl.DEPTH_BUFFER_BIT*/);
+  
+  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 }

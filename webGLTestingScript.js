@@ -1,5 +1,17 @@
 var gl;
 var cmTID;
+var vbo;
+var ebo;
+
+var vertexSource = `
+
+void main()
+{
+  
+}
+`;
+
+var fragmentSource = ``;
 
 class Shader { //shader class
   var programID;
@@ -146,12 +158,24 @@ function start() {
   
   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
   
-  var vbo = gl.createBuffer();
-  var ebo = gl.createBuffer();
+  vbo = gl.createBuffer();
+  ebo = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
   gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ebo);
   
+  var shader = new Shader();
+  
+  shader.compileShaderProgram(vertexSource, fragmentSource);
+  
   main();
+}
+
+function update() {
+  
+}
+
+function draw() {
+  
 }
 
 function main() {

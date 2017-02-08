@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+  <body>
+    <canvas id="painter" width="800" height="600" style="border: 5px solid black"></canvas>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+      console.log("Started!");
+      var canvas = document.getElementById("painter");
+      var WIDTH = canvas.width;
+      var HEIGHT = canvas.height;
+      var c = canvas.getContext("2d");
+      
+      class Rectangle {
+        var width;
+        var height;
+        var x;
+        var y;
+        var color;
+        
+        constructor(x, y, width, height) {
+          this.x = x;
+          this.y = y;
+          this.width = width;
+          this.height = height;
+        }
+        
+        function draw() {
+          c.fillStyle = color;
+          c.fillRect(this.x, this.y, this.width, this.height);
+        }
+      }
+
+      var cmTID;
+      
+      function update() {
+      
+      }
+      
+      function draw() {
+        update();
+        clearTimeout(cmTID);
+        cmTID = setTimeout(draw, 100);
+        console.log("Draw Function called");
+      }
+      
+      draw();
+    </script>
+  </body>
+</html>

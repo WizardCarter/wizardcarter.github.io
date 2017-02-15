@@ -10,18 +10,26 @@
       #webGLLink {
         display: none;
       }
+      #otherSiteLink {
+        display: none; 
+      }
+      #randomCrapLink {
+        display: none;  
+      }
     </style>
   </head>
   <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <h1 id="topTitle">Test site</h1>
     <a id="webGLLink" href="webgltesting.html">Go to my WebGL testing page</a><br>
-    <a id="otherSiteLink" href="http://sites.google.com/site/carrotcorporations">My Other Site</a>
+    <a id="otherSiteLink" href="http://sites.google.com/site/carrotcorporations">My Other Site</a><br>
+    <a id="randomCrapLink" href="randomCrap.html">Random Testing stuff</a>
     <script>
       $(document).ready(function(){
        $("#topTitle").fadeIn(4000);
        $("#webGLLink").fadeIn(4000);
        $("#otherSiteLink").fadeIn(4000);
+       $("#randomCrapLink").fadeIn(4000);
       });
     </script>
   <script>

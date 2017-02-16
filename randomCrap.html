@@ -6,11 +6,17 @@
   </head>
   <body>
     <button type="button" id="button1">EXPAND</button>
+    <p style="position:absolute;" id="zoomText">
+      Don't touch me.
+    </p>
     <script>
       $("#button1").click(function(){
-        $("#button1").animate({width: '+=1000px'});
+        $("#button1").animate({width: '+=500px'});
         console.log("Button clicked!");
       });
+     $("#zoomText").click(function(){
+      $("#zoomText").animate({top: '+=3000px'});
+     });
     </script>
   </body>
 </html>

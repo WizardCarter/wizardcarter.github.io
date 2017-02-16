@@ -4,6 +4,7 @@
     <title>Random Stuff</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
   </head>
   <body>
     <button type="button" id="button1">EXPAND</button>
@@ -17,6 +18,7 @@
       });
      $("#zoomText").mouseenter(function(){
       $("#zoomText").animate({top: '+=3000px'});
+      responsiveVoice.speak("HEY!");
      });
     </script>
   </body>

@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html ng-app>
+  <head>
+    <title>Hohmann Transfer</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <p>
+    This page is for computing changes in velocity and the time of <br>
+    flight for a Hohmann Transfer. A Hohmann Transfer is the most <br>
+    energy-efficient way of moving a spacecraft from one orbit to another.<br>
+    Put in some things below and see what happens! <br>
+    Note: In the following, "body" refers to a planet, star, black hole, <br>
+    or other massive object. <br>
+    </p>
+    <p><strong>Gravitational Parameter (G*M) : </strong></p><input type="text" ng-model="u"></input><br>
+    <p><strong>Radius of Orbit 1 (from body's center) : </strong></p><input type="text" ng-model="r1"></input><br>
+    <script>
+      $("input").keyup(function(){
+        console.log({{u}});
+      });
+    </script>
+  </body>
+</html>

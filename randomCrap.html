@@ -6,8 +6,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
   </head>
-  <body>
+  <body ng-app>
     <button type="button" id="button1">EXPAND</button>
+    <input type="text" ng-model="personName"></input>
+    <p>{{personName}}</p>
     <p style="position:absolute;" id="zoomText">
       Don't touch me.
     </p>

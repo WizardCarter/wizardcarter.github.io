@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html ng-app>
+<html>
   <head>
     <title>Hohmann Transfer</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
@@ -14,9 +14,45 @@
     Note: In the following, "body" refers to a planet, star, black hole, <br>
     or other massive object. <br>
     </p>
-    <p><strong>Gravitational Parameter (G*M km^3/s^2) : </strong></p><input type="text" ng-model="u"></input><br>
-    <p><strong>Radius of Orbit 1 (from body's center km) : </strong></p><input type="text" ng-model="r1"></input><br>
-    <p><strong>Radius of Orbit 2 (from body's center km) : </strong></p><input type="text" ng-model="r2"></input><br>
-    
+    <p><strong>Gravitational Parameter (G*M km^3/s^2) : </strong></p><input type="text" id="u"></input><br>
+    <p><strong>Radius of Orbit 1 (from body's center km) : </strong></p><input type="text" id="r1"></input><br>
+    <p><strong>Radius of Orbit 2 (from body's center km) : </strong></p><input type="text" id="r2"></input><br>
+    <button type="button" onclick="calculate();">Compute!</button><br>
+    <p id="at"></p><br>
+    <p id="TOF"></p><br>
+    <p id="dv1"></p><br>
+    <p id="dv2"></p><br>
+    <p id="tdv"></p><br>
+    <script>
+      function compute() {
+        var u = parseFloat(document.getElementById("u").value); //get values
+        var r1 = parseFloat(document.getElementById("r1").value);
+        var r2 = parseFloat(document.getElementById("r2").value);
+      
+        var a = (r1+r2)/2;  //find the semi-major axis of the transfer orbit
+        var et = -1*(u/(2*a)); //find the specific mechanical energy for the transfer orbit
+        var TOF = 2*Math.PI*Math.sqrt((Math.pow(a, 3))/u); //find the time of flight for the mission
+        
+        document.getElementById("TOF").innerHTML = "Time of Flight (seconds): " + TOF; //display TOF
+        document.getElementById("at").innerHTML = "Semi-Major axis of the Transfer orbit (km): " + a;
+        
+        var v1 = Math.sqrt(u/r1); //velocity at orbit one
+        var v2 = Math.sqrt(u/r2); //velocity at orbit two
+        var vt1 = Math.sqrt(2*((u/r1)+et)); //transfer velocity at orbit one
+        var vt2 = Math.sqrt(2*((u/r2)+et)); //transfer velocity at orbit two
+        
+        var dV1 = Math.abs(vt1-v1); //delta-v one
+        
+        document.getElementById("dv1").innerHTML = "First Change in Velocity (km/s): " + dV1; //display dv1
+        
+        var dV2 = Math.abs(vt2-v2); //delta-v two
+        
+        document.getElementById("dv2").innerHTML = "Second Change in Velocity (km/s): " + dV2; //display dv2
+        
+        var tdV = dV1 + dV2; //total delta-v
+        
+        document.getElementById("tdv").innerHTML = "Total change in velocity (km/s): " + tdV;
+      }
+    </script>
   </body>
 </html>

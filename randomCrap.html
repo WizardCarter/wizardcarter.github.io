@@ -8,12 +8,39 @@
   </head>
   <body ng-app>
     <button type="button" id="button1">EXPAND</button><br>
-    <input type="text" ng-model="personName">Name</input>
+    <input id="namebox" type="text" ng-model="personName" placeholder="Name"></input>
     <p>Hello, {{personName}}!</p>
     <p style="position:absolute;" id="zoomText">
       Don't touch me.
     </p>
     <script>
+      function setCookie(name, value, days) { //function to set a cookie
+        var day = new Date();
+        day.setTime(day.getTime() + (days*24*60*60*1000));
+        var expires = "expires="+ day.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/";
+      }
+      function getCookie(cname) { //function to get a cookie
+          var name = cname + "=";
+          var decodedCookie = decodeURIComponent(document.cookie);
+          var ca = decodedCookie.split(';');
+          for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+               c = c.substring(1);
+             }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
+      $(document).onload(function(){
+        if (getCookie("name") != "") {
+          var name = getCookie("name");
+          document.getElementById("namebox").value = name;
+        }
+      });
       $("#button1").click(function(){
         $("#button1").animate({width: '+=500px'});
         console.log("Button clicked!");
@@ -21,6 +48,10 @@
      $("#zoomText").mouseenter(function(){
       $("#zoomText").animate({top: '+=3000px'});
       responsiveVoice.speak("HEY!");
+     });
+     $("#namebox").keyup(function(){
+      var name = document.getElementById("namebox").value;
+      setCookie("name", name, 30);
      });
     </script>
   </body>

@@ -9,7 +9,7 @@
   <body ng-app>
     <button type="button" id="button1">EXPAND</button><br>
     <input id="namebox" type="text" ng-model="personName" placeholder="Name"></input>
-    <p>Hello, {{personName}}!</p>
+    <p id="namep">Hello, {{personName}}!</p>
     <p style="position:absolute;" id="zoomText">
       Don't touch me.
     </p>
@@ -39,7 +39,7 @@
         if (getCookie("name") != "") {
           var name = getCookie("name");
           document.getElementById("namebox").value = name;
-          $("#namebox").keyup();
+          document.getElementById("namep").innerHTML = "Hello, " + name + "!";
         }
       });
       $("#button1").click(function(){

@@ -39,6 +39,7 @@
         if (getCookie("name") != "") {
           var name = getCookie("name");
           document.getElementById("namebox").value = name;
+          $("#namebox").keyup();
         }
       });
       $("#button1").click(function(){

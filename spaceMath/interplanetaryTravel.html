@@ -19,5 +19,20 @@
     <p><strong>Radius of the initial orbit around the first planet (from center km)</strong></p><input type="text" id="r1"></input>
     <p><strong>Radius of the final orbit around the second planet (from center km)</strong></p><input type="text" id="r2"></input><br>
     <button type="button" onclick="compute()"></button>
+    <script>
+      function compute() {
+        
+        var uS = 132712000000; //Grav. parameter for the sun
+        
+        var rp1 = parseFloat(document.getElementById("rp1").value); //grab input
+        var rp2 = parseFloat(document.getElementById("rp2").value);
+        var u1 = parseFloat(document.getElementById("u1").value);
+        var u2 = parseFloat(document.getElementById("u2").value);
+        var r1 = parseFloat(document.getElementById("r1").value);
+        var r2 = parseFloat(document.getElementById("r2").value);
+        
+        //Part one - Hohmann transfer around sun
+      }
+    </script>
   </body>
 </html>

@@ -18,6 +18,13 @@
     <p><strong>Gravitational Parameter of the second planet (km^3/s^2)</strong></p><input type="text" id="u2"></input>
     <p><strong>Radius of the initial orbit around the first planet (from center km)</strong></p><input type="text" id="r1"></input>
     <p><strong>Radius of the final orbit around the second planet (from center km)</strong></p><input type="text" id="r2"></input><br>
+    <p id="at"></p><br>
+    <p id="TOF"></p><br>
+    <p id="vp1"></p><br>
+    <p id="vp2"></p><br>
+    <p id="dv1"></p><br>
+    <p id="dv2"></p><br>
+    <p id="dvt"></p><br>
     <button type="button" onclick="compute()"></button>
     <script>
       function compute() {
@@ -32,6 +39,51 @@
         var r2 = parseFloat(document.getElementById("r2").value);
         
         //Part one - Hohmann transfer around sun
+        
+        var at = (rp1+rp2)/2; //semi-major axis of the transfer orbit
+        var TOF = 2*Math.PI*Math.sqrt((Math.pow(a, 3))/uS); //time of flight
+        var et = -1*(uS/(2*a)); //specific mechanical energy of the transfer orbit
+        
+        document.getElementById("at").innerHTML = "Semi-Major axis of the Transfer Orbit (km): " + at; //display
+        document.getElementById("TOF").innerHTML = "Time of Flight (seconds): " + TOF;
+        
+        var vp1 = Math.sqrt(uS/rp1); //velocities for the planets
+        var vp2 = Math.sqrt(uS/rp2);
+        var vt1 = Math.sqrt(2*((uS/rp1)+et)); //velocities for the transfer orbit
+        var vt2 = Math.sqrt(2*((uS/rp2)+et));
+        
+        document.getElementById("vp1").innerHTML = "Velocity of planet one (km/s): " + vp1;
+        document.getElementById("vp2").innerHTML = "Velocity of planet two (km/s): " + vp2;
+        
+        var vInf1 = Math.abs(vt1-vp1); //velocity at the edge of planet one's influence
+        var vInf2 = Math.abs(vp2-vt2); //velocity at the edge of planet two's influence
+        
+        //Part 2 - Velocity to enter hyperbolic path away from planet 1
+        
+        var eHyp1 = ((Math.pow(vInf1, 2))/2); //specific-mech energy for the hyperbolic path
+        
+        var vInitial = Math.sqrt(u1/r1); //velocity at the initial orbit
+        var vHyp1 = Math.sqrt(2*((u1/r1)+eHyp1)); //velocity of the hyperbolic orbit at planet 1
+        
+        var dv1 = Math.abs(vHyp1-vInitial); //delta-v one
+        
+        document.getElementById("dv1").innerHTML = "First change in velocity (km/s): " + dv1;
+        
+        //Part 3 - Arrival from hyperbolic path at planet 2
+        
+        var eHyp2 = ((Math.pow(vInf2, 2))/2); //sp me for hyp path
+        
+        var vFinal = Math.sqrt(u2/r2); //velocity at the final orbit
+        var vHyp2 = Math.sqrt(2*((u2/r2)+eHyp2)); //velocity of the hyperbolic path at planet 2
+        
+        var dv2 = Math.abs(vFinal-vHyp2); //delta-v two
+        
+        document.getElementById("dv2").innerHTML = "Second change in velocity (km/s): " + dv2;
+        
+        var dvt = dv1+dv2; //total change in velocity
+        
+        document.getElementById("dvt").innerHTML = "Total change in velocity (km/s): " + dvt;
+        
       }
     </script>
   </body>

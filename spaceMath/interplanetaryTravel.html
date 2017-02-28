@@ -41,7 +41,7 @@
         //Part one - Hohmann transfer around sun
         
         var at = (rp1+rp2)/2; //semi-major axis of the transfer orbit
-        var TOF = 2*Math.PI*Math.sqrt((Math.pow(a, 3))/uS); //time of flight
+        var TOF = 2*Math.PI*Math.sqrt((Math.pow(at, 3))/uS); //time of flight
         var et = -1*(uS/(2*a)); //specific mechanical energy of the transfer orbit
         
         document.getElementById("at").innerHTML = "Semi-Major axis of the Transfer Orbit (km): " + at; //display

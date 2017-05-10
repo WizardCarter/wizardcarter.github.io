@@ -36,10 +36,28 @@
     <p>Below you can watch my video series, The Random Ruckus. You can expect about one episode per 6 weeks.</p><br>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/lPzEGd2HOZQ?list=PLw54m7ipQ5gNZGKzEbNbPr3cRDjXAInXd" frameborder="0" allowfullscreen></iframe>
     <script>
+      var konami_code = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]
+      var konami_pos = 0;
       $(document).ready(function(){
        $("#topTitle").fadeIn(4000);
        $("a").fadeIn(4000);
        $("img").fadeIn(4000);
+      });
+      document.addEventListener("keydown", function(e) {
+        if (konami_pos < 9) {
+          if (e.keyCode == konami_code[konami_pos]) {
+            konami_pos++;  
+          } else {
+            konami_pos = 0;  
+          }
+        } else {
+            if (e.keyCode == konami_code[9]) {
+              konami_pos = 0;
+              document.write("Suprise, you big-a** geek!")
+            } else {
+              konami_pos = 0;  
+            }
+        }
       });
     </script>
   <script>

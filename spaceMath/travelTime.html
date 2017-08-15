@@ -12,10 +12,23 @@
     <p><strong>The eccentricity of the orbit (dimensionless): </strong></p><input type="text" id="e"></input><br>
     <p><strong>The inital true anomaly of the satellite (radians): </strong></p><input type="text" id="v1"></input><br>
     <p><strong>The final true anomaly of the satellite (radians): </strong></p><input type="text" id="v2"></input><br><br>
+    <p><strong>The gravitational parameter of the body the satellite is orbiting (km^3/s^2):</strong></p><input type="text" id="u"></input>
+    <button type="button" onclick="compute();">Compute!</button>
     <p id="E1"></p>
     <p id="E2"></p>
     <p id="M1"></p>
     <p id="M2"></p>
     <p id="TOF"></p>
+    <script>
+      function compute() {
+        var a = parseFloat(document.getElementById("a").value);
+        var e = parseFloat(document.getElementById("e").value);
+        var v1 = parseFloat(document.getElementById("v1").value);
+        var v2 = parseFloat(document.getElementById("v2").value);
+        var u = parseFloat(document.getElementById("u").value);
+        
+        var n = Math.sqrt(u/(Math.pow(a, 3)));
+      }
+    </script>
   </body>
 </html>

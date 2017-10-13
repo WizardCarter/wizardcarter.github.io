@@ -40,10 +40,14 @@
           var name = getCookie("name");
           document.getElementById("namebox").value = name;
           document.getElementById("namep").innerHTML = "Hello, " + name + "!";
+          var length = getCookie("button_length");
+          $("#button1").css("width", length);
         }
       });
       $("#button1").click(function(){
         $("#button1").animate({width: '+=500px'});
+        var length = $("#button1").css("width");
+        setCookie("button_length", length, 30);
         console.log("Button clicked!");
       });
      $("#zoomText").mouseenter(function(){

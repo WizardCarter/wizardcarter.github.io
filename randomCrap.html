@@ -41,7 +41,7 @@
           document.getElementById("namebox").value = name;
           document.getElementById("namep").innerHTML = "Hello, " + name + "!";
           var length = getCookie("button_length");
-          $("#button1").css("width", length);
+          $("#button1").css("width", length.toString() + "px");
         }
       });
       $("#button1").click(function(){

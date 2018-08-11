@@ -28,7 +28,7 @@
       I was the developer of all the software availible on my other website. The exception to <br>
       this is Smaog the Dargon, which was a collaboration project with a few friends <br>
       contributing ideas. I also developed MyData, an Android app. You can find all other<br>
-      Android apps made by me at the Google Play Store under the name CarrotWizard. <br>
+      Android apps made by me at the Google Play Store under the name <p name="beeMovieCopy"><b>CarrotWizard</b></p>. <br>
     </p>
     <!--<img id="me_img" src="images/IMG_20170320_080400-02.jpeg" alt="Me circa 1944">-->
     <div style="background-color: powderblue">
@@ -36,15 +36,35 @@
       <a id="otherSiteLink" href="http://sites.google.com/site/carrotcorporations">My Other Site</a><br>
       <a id="randomCrapLink" href="randomCrap.html">Random Testing stuff</a><br>
       <a href="spaceMath/index.html">The Hub for my space math calculators</a>
-      <a href="https://www.mediafire.com/file/18m4m0nxwuvj4vv/DemoGame.zip">A Temporary Link to a demo RPG Maker game</a>
     </div>
     <script>
+      function copyStringToClipboard (str) {
+        // Create new element
+        var el = document.createElement('textarea');
+        // Set value (string to be copied)
+        el.value = str;
+        // Set non-editable to avoid focus and move outside of view
+        el.setAttribute('readonly', '');
+        el.style = {position: 'absolute', left: '-9999px'};
+        document.body.appendChild(el);
+        // Select text inside element
+        el.select();
+        // Copy text to clipboard
+        document.execCommand('copy');
+        // Remove temporary element
+        document.body.removeChild(el);
+      }
+      
       var konami_code = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]
       var konami_pos = 0;
       $(document).ready(function(){
        $("#topTitle").fadeIn(4000);
        $("a").fadeIn(4000);
        $("img").fadeIn(4000);
+      });
+      //copy Bee Movie script when CarrotWizard clicked
+      $("#beeMovieCopy").click(function(){
+        copyStringToClipboard("https://gist.githubusercontent.com/The5heepDev/a15539b297a7862af4f12ce07fee6bb7/raw/7164813a9b8d0a3b2dcffd5b80005f1967887475/entire_bee_movie_script");
       });
       document.addEventListener("keydown", function(e) {
         if (konami_pos < 9) {
